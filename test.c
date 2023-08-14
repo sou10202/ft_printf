@@ -12,10 +12,10 @@ size_t	ft_strlen(const char *str)
 int main(void)
 {
     int n;
+    unsigned int u;
     char    *c = "abcde";
 
-    n = write(1, c, ft_strlen(c));
-    write(1, "\n", 1);
-    printf("%d", n);
+    n = -100;
+    printf("%u\n", n);
     return (0);
 }

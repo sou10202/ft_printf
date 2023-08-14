@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soyamaza <soyamaza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: soichiro <soichiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 14:59:28 by soyamaza          #+#    #+#             */
-/*   Updated: 2023/06/04 14:49:00 by soyamaza         ###   ########.fr       */
+/*   Updated: 2023/08/14 19:34:17 by soichiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+// #include "libft.h"
+#include <unistd.h>
 
-int	ft_putnbr_fd(int n, int fd)
+int	ft_putnbr(long n)
 {
 	char	c;
 	long	num;
@@ -24,16 +25,15 @@ int	ft_putnbr_fd(int n, int fd)
 	{
 		num *= -1;
 		len++;
-		write(fd, "-", 1);
+		write(1, "-", 1);
 	}
 	c = num % 10 + '0';
 	if (num < 10)
-	{
-		write(fd, &c, 1);
-	}
+		write(1, &c, 1);
 	else
 	{
-		ft_putnbr_fd(num / 10, fd);
-		write(fd, &c, 1);
+		len += ft_putnbr(num / 10);
+		write(1, &c, 1);
 	}
+	return (1 + len);
 }

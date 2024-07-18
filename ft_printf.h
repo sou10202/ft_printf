@@ -18,7 +18,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdarg.h>
-#include "./libft/libft.h"
+#include "../libft/libft.h"
 
 typedef	struct s_keep
 {
